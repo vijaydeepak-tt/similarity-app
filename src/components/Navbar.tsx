@@ -18,7 +18,7 @@ const Navbar = async ({}) => {
         <div className="md:hidden">
           <ThemeToggle />
         </div>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex gap-4">
           <ThemeToggle />
           <Link
             href="/documentation"
@@ -26,20 +26,20 @@ const Navbar = async ({}) => {
           >
             Documentation
           </Link>
+          {session ? (
+            <>
+              <Link
+                href="/dashboard"
+                className={buttonVariants({ variant: 'ghost' })}
+              >
+                Dashboard
+              </Link>
+              <SignOutButton />
+            </>
+          ) : (
+            <SignInButton />
+          )}
         </div>
-        {session ? (
-          <>
-            <Link
-              href="/dashboard"
-              className={buttonVariants({ variant: 'ghost' })}
-            >
-              Dashboard
-            </Link>
-            <SignOutButton />
-          </>
-        ) : (
-          <SignInButton />
-        )}
       </div>
     </div>
   );
